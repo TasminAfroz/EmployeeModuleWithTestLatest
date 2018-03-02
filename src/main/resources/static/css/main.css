@@ -1,0 +1,121 @@
+body {
+    background-color: #F8F8F8;
+}
+
+a,
+a:hover {
+    color: #7C7BAD;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+#main-menu {
+    background-color: #333;
+    padding: 0.3rem 1rem;
+}
+
+#main-menu .nav-item > a {
+    color: #FFF;
+    font-size: 0.9rem;
+    line-height: 65%;
+    border-radius: 2px;
+    padding: 0.5rem;
+}
+
+#main-menu .nav-item.active > a {
+    background-color: #080808;
+}
+
+.logo {
+    display: block;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.sub-menu a {
+    padding: .5rem 0;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.section-header h1 {
+    color: #696767;
+    font-size: 1.5rem;
+}
+
+.section-header .breadcrumb {
+    padding: 0;
+    margin-bottom: .5rem;
+}
+
+.btn-purple,
+.btn-purple:focus,
+.btn-purple:active,
+.btn-purple:hover {
+    background-color: #7C7BAD;
+    border: 0;
+    border-radius: 2px;
+    color: #fff;
+}
+
+.btn-offwhite {
+    background-color: #FAF9F9;
+}
+
+#employee-table {
+    background-color: #fff;
+}
+
+#employee-table thead {
+    background-color: #F0EEEE;
+}
+
+#employee-table thead th {
+    border: 0;
+}
+
+.table-striped tbody tr:nth-of-type(2n+1) {
+    background-color: #EFEFF8;
+}
+
+#form-new-employee .form-group {
+    padding: 0;
+}
+
+.tab-pane {
+    padding: 20px 0;
+    padding-bottom: 0;
+}
+
+.employee-profile .col-form-label {
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding-top: 0;
+}
+
+/*
+ * Helper Class
+*/
+
+.bg-1 {
+    background-color: #F0EEEE;
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+.color-1 {
+    color: #7C7BAD;
+}
+
+img{
+  max-width:100px;
+  max-height:100px;
+}
+input[type=file]{
+	max-width:100px;
+  max-height:100px;
+}
