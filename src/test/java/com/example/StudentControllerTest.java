@@ -51,6 +51,7 @@ import static org.junit.Assert.assertNotNull;
 
 
 @RunWith(SpringRunner.class)
+
 public class StudentControllerTest {
 	@Mock
 	EmployeeService employeeService;
@@ -114,15 +115,31 @@ public class StudentControllerTest {
 		verifyNoMoreInteractions(employeeService);
 	}
 
+	
+	
+
+    @Test
+    public void shouldReturnCorrectStation() throws Exception {
+    	Employee user = new Employee(1, "Daenerys Targaryen");
+		when(employeeService.findById(1)).thenReturn(user);
+        mockMvc.perform(get("/api/employee/details/1")
+                .accept(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk());
+    }
+    
+    
 	@Test
 	public void test_get_by_id_success() throws Exception {
 		Employee user = new Employee(1, "Daenerys Targaryen");
 		when(employeeService.findById(1)).thenReturn(user);
 		
-		mockMvc.perform(get("/api/employee/details/1")).andDo(MockMvcResultHandlers.print());
-//		mockMvc.perform(get("http://localhost:8080/api/employee/details/{id}", 1)).andExpect(status().isOk())
-//				.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-//				.andExpect(jsonPath("$.employeeId", is(1))).andExpect(jsonPath("$.name", is("Daenerys Targaryen")));
+//		mockMvc.perform(get("/api/employee/details/1")).andDo(MockMvcResultHandlers.print());
+		mockMvc.perform(get("/api/employee/details/1")).andExpect(status().isOk())
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+				.andExpect(jsonPath("$.employeeId", is(1))).andExpect(jsonPath("$.name", is("Daenerys Targaryen")));
+//	
+	
+		
 //		verify(employeeService, times(1)).findById(1);
 //		verifyNoMoreInteractions(employeeService);
 	}
@@ -257,7 +274,7 @@ public class StudentControllerTest {
 		
 	        
 	        
-	        when(employeeService.findAll(limit)).thenReturn(foundPage);
+//	        when(employeeService.findAll(limit)).thenReturn(foundPage);
 
 //	        List<Employee> actual = repository.findPersonsForPage(SEARCH_TERM, PAGE_INDEX);
 
@@ -269,11 +286,11 @@ public class StudentControllerTest {
 		
 		
 		List<Employee> users = Arrays.asList(new Employee(1, "Daenerys Targaryen"), new Employee(2, "John Snow"));
-
-//		when(employeeRepository.findAll()).thenReturn(users);
+		final Page<Employee> page = new PageImpl<>(users);
+		when(employeeRepository.findAll()).thenReturn(page);
 		
-		
-		when(employeeService.findAll(limit)).thenReturn((Page<Employee>) users);
+//		new PageImpl<Employee>(users, new PageRequest(1, 1), users.size());
+//		when(employeeService.findAll(new PageRequest(1, 2))).thenReturn((PageImpl<Employee>) users);
 		}
 }
 
